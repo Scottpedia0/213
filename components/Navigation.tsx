@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, X, Shield, Map, Compass, ClipboardCheck, DollarSign, Phone, Globe } from 'lucide-react';
+import { Menu, X, Shield, Map, Compass, ClipboardCheck, DollarSign, Phone, Globe, Users } from 'lucide-react';
 
 interface NavigationProps {
   activeTab: string;
@@ -11,6 +11,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, setActiveTab }) => {
 
   const navItems = [
     { id: 'reality', label: 'Reality', icon: Map },
+    { id: 'stories', label: 'Stories', icon: Users },
     { id: 'law', label: 'Law & Science', icon: Shield },
     { id: 'treaty', label: 'Treaties', icon: Globe },
     { id: 'strategy', label: 'Strategy', icon: Compass },

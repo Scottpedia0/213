@@ -7,6 +7,7 @@ import RiskAssessment from './components/RiskAssessment';
 import WarChestCalculator from './components/WarChestCalculator';
 import TreatyViolations from './components/TreatyViolations';
 import Directory from './components/Directory';
+import FathersStories from './components/FathersStories';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState('reality');
@@ -15,6 +16,8 @@ const App: React.FC = () => {
     switch (activeTab) {
       case 'reality':
         return <Home />;
+      case 'stories':
+        return <FathersStories />;
       case 'law':
         return (
           <div className="max-w-7xl mx-auto pt-8 pb-12">
