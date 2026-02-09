@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from './components/Navigation';
 import Home from './components/Home';
 import LegalFramework from './components/LegalFramework';
@@ -8,9 +8,16 @@ import WarChestCalculator from './components/WarChestCalculator';
 import TreatyViolations from './components/TreatyViolations';
 import Directory from './components/Directory';
 import FathersStories from './components/FathersStories';
+import WelcomeModal from './components/WelcomeModal';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState('reality');
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    // Show modal on initial load
+    setShowModal(true);
+  }, []);
 
   const renderContent = () => {
     switch (activeTab) {
@@ -41,6 +48,8 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans">
+      <WelcomeModal isOpen={showModal} onClose={() => setShowModal(false)} />
+      
       <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
       
       <main className="px-4 sm:px-6 lg:px-8">
