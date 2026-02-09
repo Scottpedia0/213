@@ -18,7 +18,7 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({ isOpen, onClose }) => {
       />
 
       {/* Modal Content */}
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden animate-fade-in-up">
+      <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden animate-fade-in-up max-h-[90vh] flex flex-col">
         {/* Close Button */}
         <button 
           onClick={onClose}
@@ -27,32 +27,48 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({ isOpen, onClose }) => {
           <X size={24} />
         </button>
 
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row h-full overflow-y-auto md:overflow-hidden">
           {/* Left / Top Banner */}
-          <div className="bg-slate-900 p-8 md:w-1/3 flex flex-col justify-center items-center text-center text-white relative overflow-hidden">
+          <div className="bg-slate-900 p-8 md:w-1/3 flex-shrink-0 flex flex-col justify-center items-center text-center text-white relative overflow-hidden min-h-[200px] md:min-h-0">
             <div className="absolute inset-0 bg-blue-600 opacity-20 blur-3xl rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
             <Heart className="text-red-500 mb-4 relative z-10" size={48} fill="currentColor" />
             <h3 className="font-serif text-2xl font-bold relative z-10">Project 213</h3>
-            <p className="text-xs text-slate-400 mt-2 uppercase tracking-widest relative z-10">Mission: Charlotte</p>
+            <a 
+              href="https://rescuecharlotte.org" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-xs text-slate-400 mt-2 uppercase tracking-widest relative z-10 hover:text-white hover:underline transition-all cursor-pointer"
+            >
+              For Charlotte
+            </a>
           </div>
 
           {/* Right / Bottom Content */}
-          <div className="p-8 md:w-2/3">
+          <div className="p-8 md:w-2/3 overflow-y-auto">
             <h2 className="text-xl font-bold text-slate-900 font-serif italic mb-6 leading-relaxed">
               "Hindi ito laban ng ama at ina — ito ay para sa kapakanan ng bata, una sa lahat."
             </h2>
 
             <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
               <p>
-                Right now, this resource is shaped by a very specific situation — I'm a U.S. father working to bring my daughter, <strong>Charlotte</strong>, home. That makes some of the tactical advice here heavily focused on international abduction.
+                Right now, this resource is shaped by a very specific situation — I'm a U.S. father working to bring my daughter, <strong>Charlotte</strong>, home. Her mother — U.S. born, UK resident — exploited Article 213 to take her to the Philippines after it became clear she was going to lose custody because she was unfit, just as she'd done before with another child and a fabricated abuse claim. 
               </p>
               <p>
-                But the deeper I got into Article 213, the clearer it became: <strong className="text-slate-900">this isn't a dad problem or a mom problem.</strong> It's a system that doesn't put the child first. That affects Filipino families — fathers, mothers, and most of all, kids — every single day.
+                With an active arrest warrant, she can't leave — which means my daughter is now pigeonholed in a country she wasn't born in, cut off from her father, because a law made that easy to do.
+              </p>
+              <p>
+                <strong className="text-slate-900">That's not protection. That's exploitation.</strong> And she's not the only one doing it.
+              </p>
+              <p>
+                When a law turns a country into a safe haven for unfit parents who happen to have Filipino blood, something is deeply wrong with that law.
+              </p>
+              <p>
+                The deeper I got into Article 213, the clearer it became: <strong className="text-slate-900">this isn't a dad problem or a mom problem.</strong> It's a system that doesn't put the child first — and it affects Filipino families every single day.
               </p>
               <p>
                 Once Charlotte is home, I'm committed to reworking this into a broader resource for anyone in the Philippines navigating Article 213 — connecting with reform advocates and pushing for a system that asks one question first:
               </p>
-              <p className="font-bold text-slate-900 text-center py-2 bg-slate-50 rounded-lg border border-slate-100 mt-2">
+              <p className="font-bold text-slate-900 text-center py-3 bg-slate-50 rounded-lg border border-slate-100 mt-2">
                 "Ano ang pinakamabuti para sa bata?"<br/>
                 <span className="font-normal text-xs text-slate-500">(What is best for the child?)</span>
               </p>
