@@ -7,26 +7,27 @@ import ActionPlanPrint from './ActionPlanPrint';
 
 // System context injection
 const SYSTEM_CONTEXT = `
-You are a specialized Legal Strategy Assistant for "Project 213", a resource for parents navigating Philippine Custody Law.
-Your goal is to interview the user to understand their specific situation regarding Article 213 (Tender Years Doctrine), Article 176 (Illegitimacy), and other family code provisions.
+You are the Tactical Strategy Engine for "Project 213".
+You are NOT a therapist. You are a Legal Strategy Consultant.
 
-Your knowledge base includes:
-1. Article 213: No child under 7 separated from the mother unless compelling reasons (drugs, abuse).
-2. Article 176: Illegitimate children are under sole maternal authority. Fathers generally have visitation rights but no custody.
-3. Hague Gap: The Philippines is a Hague signatory, but many countries (like the US) have not accepted its accession, complicating international return.
-4. RA 9262 (VAWC): Often used in custody disputes for protection orders.
+Your Mission: Guide parents through the minefield of Philippine Custody Law (Article 213, Article 176, Hague Gap).
 
-INTERVIEW PROCESS:
-1. Actively lead the conversation. Ask one or two specific questions at a time to gather the necessary facts.
-2. Key Information Needed:
-   - Child's Age (Is the child under 7?)
-   - Marital Status (Were the parents married in the Philippines? Is the child legitimate?)
-   - Location (Where is the child now?)
-   - Citizenship (Dual citizens? Foreign passports?)
-3. Once you have a clear picture of the situation, suggest specific actionable steps or offer to "Generate a Strategic Action Plan" which will create a downloadable PDF.
+CORE KNOWLEDGE:
+1. Article 213 (Tender Years): Absolute maternal custody under 7. The only exception is "Compelling Reasons" (Drugs, Abuse, Neglect). Poverty is NOT a compelling reason.
+2. Article 176 (Illegitimacy): Unmarried mothers have sole authority. Fathers are legal strangers unless they prove unfitness.
+3. The Hague Gap: US Court orders are useless in the Philippines until "Recognized" by a PH court.
+4. RA 9262 (VAWC): Often weaponized. If the user is angry or unstable, warn them that their anger is a liability.
 
-TONE:
-Direct, knowledgeable, and supportive. Be realistic about the difficulties of Philippine law but focus on finding the best available path for the user, whether they are a mother or a father.
+TONE & PERSONA:
+- Stoic, Operational, Military-Grade.
+- "Tough Love": If a user complains about "fairness," remind them the law does not care about fairness. It cares about statutes.
+- If the user admits to anger, mental health struggles, or aggression, tell them immediately: "Fix yourself. If you are broken, you cannot lead. Your instability is evidence for the opposition."
+- Focus on Evidence, Logistics, and Strategy. Not emotions.
+
+INTERVIEW PROTOCOL:
+1. Assess Status: Child's Age? Legitimacy (Married/Unmarried)? Location?
+2. Assess Leverage: Does the user have evidence of drug use? Neglect?
+3. Strategic Output: Push them towards generating the "Strategic Action Plan".
 `;
 
 const AiAssistant: React.FC = () => {
@@ -36,7 +37,7 @@ const AiAssistant: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     { 
       role: 'model', 
-      text: "Hello. I'm here to help you navigate the legal situation regarding your child. To provide the best guidance and generate a personalized action plan, I need to ask a few questions first.\n\nCould you briefly describe your situation? For example, how old is your child, and are you the custodial or non-custodial parent?", 
+      text: "Project 213 Tactical Engine Online.\n\nI need to calibrate your situation. State your Child's Age, your Marital Status with the mother, and the Child's current location.", 
       timestamp: new Date() 
     }
   ]);
@@ -88,12 +89,12 @@ const AiAssistant: React.FC = () => {
         }
       });
 
-      const aiText = response.text || "I apologize, the connection was interrupted. Please try again.";
+      const aiText = response.text || "Signal interrupted. Re-state your input.";
       
       setMessages(prev => [...prev, { role: 'model', text: aiText, timestamp: new Date() }]);
     } catch (error) {
       console.error("AI Error:", error);
-      setMessages(prev => [...prev, { role: 'model', text: "Connection error. Please check your API configuration.", timestamp: new Date() }]);
+      setMessages(prev => [...prev, { role: 'model', text: "Connection error. Check API configuration.", timestamp: new Date() }]);
     } finally {
       setIsThinking(false);
     }
@@ -162,8 +163,8 @@ const AiAssistant: React.FC = () => {
           {/* Header */}
           <div className="bg-slate-900 text-white p-4 flex items-center justify-between rounded-t-xl">
             <div className="flex items-center gap-2">
-              <div className="bg-green-500 w-2 h-2 rounded-full animate-pulse"></div>
-              <span className="font-bold font-mono">CASE ASSESSMENT</span>
+              <div className="bg-red-500 w-2 h-2 rounded-full animate-pulse"></div>
+              <span className="font-bold font-mono tracking-wider">TACTICAL OPS</span>
             </div>
             <div className="flex gap-2 text-slate-400">
                <button onClick={() => setIsMaximized(!isMaximized)} className="hover:text-white">
@@ -181,7 +182,7 @@ const AiAssistant: React.FC = () => {
               <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] p-3 rounded-xl text-sm leading-relaxed shadow-sm
                   ${msg.role === 'user' 
-                    ? 'bg-blue-600 text-white rounded-br-none' 
+                    ? 'bg-slate-800 text-white rounded-br-none' 
                     : 'bg-white text-slate-800 border border-slate-200 rounded-bl-none'}`}>
                   {msg.text}
                 </div>
@@ -191,23 +192,23 @@ const AiAssistant: React.FC = () => {
               <div className="flex justify-start">
                 <div className="bg-white p-3 rounded-xl border border-slate-200 flex items-center gap-2">
                   <Loader2 size={16} className="animate-spin text-slate-400" />
-                  <span className="text-xs text-slate-400">Analyzing...</span>
+                  <span className="text-xs text-slate-400">Calibrating...</span>
                 </div>
               </div>
-            )}
+            ))}
             <div ref={messagesEndRef} />
           </div>
 
           {/* Action Area */}
           <div className="p-4 bg-white border-t border-slate-100">
-             {messages.length > 4 && (
+             {messages.length > 2 && (
                  <button 
                     onClick={generateStrategicPlan}
                     disabled={isGeneratingPlan}
-                    className="w-full mb-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2 rounded-lg border border-slate-300 flex items-center justify-center gap-2 transition-colors"
+                    className="w-full mb-3 bg-red-50 hover:bg-red-100 text-red-700 text-xs font-bold py-2 rounded-lg border border-red-200 flex items-center justify-center gap-2 transition-colors"
                  >
                     {isGeneratingPlan ? <Loader2 size={14} className="animate-spin" /> : <FileText size={14} />}
-                    GENERATE PDF ACTION PLAN
+                    GENERATE TACTICAL BRIEF (PDF)
                  </button>
              )}
 
@@ -217,13 +218,13 @@ const AiAssistant: React.FC = () => {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-                placeholder="Type your situation..."
-                className="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter sitrep..."
+                className="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-slate-400"
               />
               <button 
                 onClick={handleSendMessage}
                 disabled={!inputValue.trim() || isThinking}
-                className="bg-slate-900 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50"
+                className="bg-slate-900 text-white p-2 rounded-lg hover:bg-slate-700 transition-colors disabled:opacity-50"
               >
                 <Send size={20} />
               </button>
