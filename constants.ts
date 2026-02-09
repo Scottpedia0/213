@@ -1,3 +1,4 @@
+
 import { CaseLaw, Statute, StrategyStep, Bill, ScientificStudy, Treaty, Contact } from './types';
 
 export const SCIENCE_DATA: ScientificStudy[] = [
@@ -164,6 +165,36 @@ export const CONTACT_DATA: Contact[] = [
     description: 'Can stop illegal exit of minors at airports (1343 Action Line).',
     contactInfo: ['1343 (Hotline)', 'secretariat@iacat.gov.ph'],
     utility: 'Blocking Exit',
+    category: 'Emergency'
+  }
+];
+
+export const MENTAL_HEALTH_DATA: Contact[] = [
+  {
+    id: 'ncmh_crisis',
+    agency: 'National Center for Mental Health',
+    department: '24/7 Crisis Hotline',
+    description: 'Immediate support for psychiatric emergencies. Use this if you feel you are breaking.',
+    contactInfo: ['1553 (Luzon-wide)', '0917-899-USAP (8727)'],
+    utility: 'Emergency Crisis Intervention',
+    category: 'Emergency'
+  },
+  {
+    id: 'in_touch',
+    agency: 'In Touch Community Services',
+    department: 'Professional Counseling',
+    description: 'Professional counseling for anger management, depression, and trauma. Critical for "Unfitness" defense.',
+    contactInfo: ['+63-2-8893-7603', 'intouch@in-touch.org'],
+    utility: 'Court-Admissible Therapy',
+    category: 'Emergency'
+  },
+  {
+    id: 'atenieo_bulatao',
+    agency: 'Ateneo Bulatao Center',
+    department: 'Psychological Services',
+    description: 'High-quality psychological assessments and therapy. Can provide documentation for court.',
+    contactInfo: ['bulataocenter.ls@ateneo.edu'],
+    utility: 'Psychological Evaluation',
     category: 'Emergency'
   }
 ];
