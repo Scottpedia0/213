@@ -171,38 +171,38 @@ export const CONTACT_DATA: Contact[] = [
 export const LEGISLATIVE_BILLS: Bill[] = [
   {
     id: '1',
-    code: 'HB 8558',
-    title: 'Shared Parenting Act',
-    status: 'Pending in Committee',
-    lastUpdate: '2023',
-    impact: 'Would explicitly allow joint custody and create a rebuttable presumption of shared parenting, overriding Art 213.',
+    code: 'HB 9349',
+    title: 'Absolute Divorce Act',
+    status: 'Approved by House',
+    lastUpdate: 'May 2024',
+    impact: 'Functions as a de facto "Shared Parenting" bill. Mandates that every divorce decree include a specific "care and custody" plan, normalizing co-parenting arrangements.',
     probability: 'Medium',
-    history: 'Refiled from previous Congresses (HB 6052). Strong opposition from conservative groups.'
+    history: 'Approved on third reading. Contains "Offending Spouse" trap clauses that fathers must navigate carefully.'
   },
   {
     id: '2',
     code: 'SB 2442',
     title: 'Family Courts Enhancement Act',
-    status: 'Senate Reading',
+    status: 'Senate Pending',
     lastUpdate: '2024',
-    impact: 'Aims to speed up family court proceedings and mandate video hearings (critical for overseas fathers).',
+    impact: 'Infrastructural reform to reduce delay. Mandates "Child-Friendly Interview Rooms" (crucial for child\'s choice testimony) and increases court-annexed social workers.',
     probability: 'High',
-    history: 'Authored by Sen. Hontiveros. Generally supported.'
+    history: 'Addresses the "procedural bottleneck" that allows parental alienation to fester.'
   },
   {
     id: '3',
-    code: 'HB 9349',
-    title: 'Absolute Divorce Act',
-    status: 'Approved by House',
-    lastUpdate: 'May 2024',
-    impact: 'Would allow for divorce and remarriage, potentially reopening custody settlements for "mixed" marriages.',
-    probability: 'Medium',
-    history: 'Historic first approval by House. Senate remains the hurdle.'
+    code: 'HB 1963/9731',
+    title: 'Expanded Paternity Leave',
+    status: 'Committee Level',
+    lastUpdate: '2023-2024',
+    impact: 'Direct attack on the sociological basis of the "Tender Years" doctrine. By recognizing fathers as primary caregivers (up to 30 days) and including unmarried fathers.',
+    probability: 'Low',
+    history: 'Aims to break gender stereotypes explicitly cited in Article 213 jurisprudence.'
   },
   {
     id: '4',
     code: 'SB 2065',
-    title: 'Fathers Rights Act (Proposed)',
+    title: 'Fathers Rights Act (Legacy)',
     status: 'Dead in Committee',
     lastUpdate: '2022',
     impact: 'Proposed equal parental authority for illegitimate fathers who recognize the child.',
@@ -228,7 +228,8 @@ export const KEY_CASES: CaseLaw[] = [
     outcome: "Remanded for full reception of evidence. Acknowledged possibility of father custody over grandparents.",
     exploitation_or_strategy_notes: [
       "The 'Stolk Pathway': Establish actual physical custody immediately. Courts are hesitant to disrupt the status quo even against statutory hierarchy.",
-      "Crucial precedent for illegitimate fathers fighting grandparents after the mother is absent/deceased."
+      "Crucial precedent for illegitimate fathers fighting grandparents after the mother is absent/deceased.",
+      "The mother died giving birth. The law still tried to prioritize grandparents over the living father."
     ],
     primary_sources: [
        { label: "Supreme Court E-Library", url: "https://elibrary.judiciary.gov.ph/assets/pdf/philrep/2023/G.R.%20No.%20234660.pdf" }
@@ -243,7 +244,7 @@ export const KEY_CASES: CaseLaw[] = [
     division: "Third Division",
     ponente: "Panganiban, J.",
     proceeding_type: "Rule 45 petition for review on certiorari",
-    context: "Illegitimate child custody dispute. Mother resided in Japan; father sought custody or joint custody, and a hold-departure order.",
+    context: "Illegitimate child. Mother worked in Japan. Father raised child alone for years. Mother returned and demanded custody.",
     child_age: "Born 1996; ~4 at removal; ~8 at SC decision.",
     article_213_issue: "Interaction of Art. 176 (sole maternal authority) with Art. 213 tender-age presumption.",
     key_rule_or_holding: "Mother has sole parental authority over illegitimate child (Art. 176). Art. 213 bars separation absent compelling reasons. Father has visitorial rights but no custody.",
@@ -256,8 +257,8 @@ export const KEY_CASES: CaseLaw[] = [
     outcome: "Mother retained custody; Father retained visitation. Hold-Departure Order denied.",
     exploitation_or_strategy_notes: [
       "Shows that father's push for joint custody due to mother's foreign residence failed absent proof of unfitness.",
-      "SPA delegating custody to grandparents does not by itself displace maternal custody.",
-      "Taking child out requires maternal consent."
+      "Recognition of the child by the father gives the right to SUPPORT, not custody.",
+      "Father was the primary caregiver, yet lost to the returning mother."
     ],
     primary_sources: [
       {
@@ -269,7 +270,10 @@ export const KEY_CASES: CaseLaw[] = [
       "habeas_corpus_filed_for_custody",
       "child_retained_by_relatives",
       "spa_delegation_to_relative",
-      "hold_departure_order_sought"
+      "hold_departure_order_sought",
+      "primary_caregiver_ignored",
+      "argument_for_joint_or_alternating_custody_due_to_mother_abroad",
+      "rule_99_child_choice_deleted_for_unmarried_parents"
     ]
   },
   {
@@ -280,19 +284,19 @@ export const KEY_CASES: CaseLaw[] = [
     division: "Third Division",
     ponente: "Panganiban, J.",
     proceeding_type: "Consolidated Rule 45 and Rule 65 petitions",
-    context: "Married parents; declaration of nullity with ancillary prayer for custody pendente lite.",
+    context: "Married parents; declaration of nullity. Trial court found mother neglected child (slapping) and awarded custody to father. SC reversed.",
     child_age: "Almost 4 years old (under 7).",
     article_213_issue: "Whether custody pendente lite of a child under 7 may be awarded to father absent 'compelling reasons'.",
-    key_rule_or_holding: "For a child under seven, custody should remain with the mother absent sufficient proof of 'compelling reasons'.",
+    key_rule_or_holding: "For a child under seven, custody should remain with the mother absent sufficient proof of 'compelling reasons'. General allegations of neglect are insufficient.",
     compelling_reasons_alleged_or_discussed: [
       "Alleged 'lesbian relations'",
       "Alleged lack of care / going out often",
-      "Alleged maltreatment"
+      "Alleged maltreatment (Slapping)"
     ],
     outcome: "Custody pendente lite returned to mother; father granted visitation.",
     exploitation_or_strategy_notes: [
-      "Illustrates how Art. 213 can reverse a provisional custody award to father when evidence is insufficient.",
-      "Tactical importance of evidentiary record in pendente lite orders."
+      "Illustrates how Art. 213 can reverse a provisional custody award to father even when Trial Court finds neglect.",
+      "The 'Compelling Reasons' bar is impossibly high—even witness testimony of slapping was deemed insufficient."
     ],
     primary_sources: [
       {
@@ -303,7 +307,88 @@ export const KEY_CASES: CaseLaw[] = [
     strategy_tags: [
       "custody_pendente_lite_in_marriage_case",
       "allegations_used_to_rebut_tender_age_presumption",
-      "importance_of_evidentiary_record"
+      "importance_of_evidentiary_record",
+      "trial_court_reversed"
+    ]
+  },
+  {
+    case_id: "G.R. No. 115640",
+    case_name: "Espiritu v. Court of Appeals",
+    decision_date: "1995-03-15",
+    court: "Supreme Court",
+    division: "Second Division",
+    ponente: "Melo, J.",
+    proceeding_type: "Habeas Corpus / Custody",
+    context: "Father vs Mother. Mother worked in USA. Father raised kids. Mother convicted of Bigamy. Children over 7.",
+    child_age: "Over 7",
+    article_213_issue: "Tender Age presumption vs Child Preference (>7).",
+    key_rule_or_holding: "The choice of a child over 7 is paramount unless the chosen parent is unfit. The mother's conviction for bigamy and the child's preference for the father outweighed the maternal preference.",
+    compelling_reasons_alleged_or_discussed: ["Bigamy", "Child Preference", "Emotional Shock"],
+    outcome: "Custody awarded to Father.",
+    exploitation_or_strategy_notes: [
+      "One of the rare wins for a father, but required: Children > 7, Mother convicted of Bigamy, and Psych testimony.",
+      "The Court criticized the CA for being swayed by 'abstract presumptions' rather than relevant facts."
+    ],
+    primary_sources: [{ label: "LawPhil", url: "https://lawphil.net/judjuris/juri1995/mar1995/gr_115640_1995.html" }],
+    strategy_tags: ["child_preference_over_7", "bigamy_evidence", "psychological_testimony", "father_win"]
+  },
+  {
+    case_id: "G.R. No. 118870",
+    case_name: "Perez v. Court of Appeals",
+    decision_date: "1996-03-29",
+    court: "Supreme Court",
+    division: "Third Division",
+    ponente: "Romero, J.",
+    proceeding_type: "Custody",
+    context: "Mother working in New York. Father present in PH. Child < 1 year old.",
+    child_age: "Under 7 (Infant)",
+    article_213_issue: "Present Father vs Absent/Working Mother.",
+    key_rule_or_holding: "Custody awarded to mother despite her residence in NY. The Court cited the Code Commission: 'No man can sound the deep sorrows of a mother who is deprived of her child of tender age.'",
+    compelling_reasons_alleged_or_discussed: ["Mother's Work Abroad", "Father's Proximity"],
+    outcome: "Custody to Mother.",
+    exploitation_or_strategy_notes: [
+      "Definitive proof that 'Best Interest' often takes a backseat to 'Maternal Feelings' in PH jurisprudence.",
+      "Distance or working abroad is NOT a compelling reason to deny custody to the mother."
+    ],
+    primary_sources: [{ label: "Supreme Court E-Library", url: "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/23/33660" }],
+    strategy_tags: ["mother_abroad", "tender_age_absolute", "emotional_rationale"]
+  },
+  {
+    case_id: "G.R. No. 235498",
+    case_name: "Masbate v. Relucio",
+    decision_date: "2018-07-30",
+    court: "Supreme Court of the Philippines",
+    division: "Second Division",
+    ponente: "Perlas-Bernabe, J.",
+    proceeding_type: "Rule 45 petition (Habeas Corpus)",
+    context: "Illegitimate child. Mother left child with father to study. Grandparents took child. Father raised child alone for months.",
+    child_age: "Under 7 at SC decision.",
+    article_213_issue: "Does tender-age presumption apply to illegitimate children? Can appellate courts grant pre-trial 'temporary custody'?",
+    key_rule_or_holding: "Art. 213 applies regardless of legitimacy (ubi lex non distinguit). Custody remains with mother absent unfitness. Deleted CA's 'temporary custody' award.",
+    compelling_reasons_alleged_or_discussed: [
+      "Neglect",
+      "Abandonment",
+      "Unemployment"
+    ],
+    outcome: "Petition partly granted. Visitation maintained. Remanded for trial.",
+    exploitation_or_strategy_notes: [
+      "Even when the SC acknowledged the father was 'very much willing to take on the whole gamut of parenting', they still defaulted to the mother.",
+      "SPA used to justify grandparents acting as custodians.",
+      "Non-custodial parent's remedy is visitation, not temporary custody, pending trial."
+    ],
+    primary_sources: [
+      {
+        label: "LawPhil PDF",
+        url: "https://lawphil.net/judjuris/juri2018/jul2018/pdf/gr_235498_2018.pdf"
+      }
+    ],
+    strategy_tags: [
+      "spa_delegation_to_grandparents",
+      "child_taken_from_school_by_relatives",
+      "trial_required_for_unfitness_allegations",
+      "visitation_rights_two_days_per_week",
+      "written_maternal_consent_required_to_take_child_out",
+      "ca_granted_pretrial_temporary_custody_then_deleted_by_sc"
     ]
   },
   {
@@ -339,42 +424,6 @@ export const KEY_CASES: CaseLaw[] = [
       "private_joint_custody_agreement_challenged",
       "foreign_divorce_cross_border_context",
       "remand_for_best_interest_determination"
-    ]
-  },
-  {
-    case_id: "G.R. No. 235498",
-    case_name: "Masbate v. Relucio",
-    decision_date: "2018-07-30",
-    court: "Supreme Court of the Philippines",
-    division: "Second Division",
-    ponente: "Perlas-Bernabe, J.",
-    proceeding_type: "Rule 45 petition (Habeas Corpus)",
-    context: "Illegitimate child. Maternal grandparents took child from school via mother's SPA.",
-    child_age: "Under 7 at SC decision.",
-    article_213_issue: "Does tender-age presumption apply to illegitimate children? Can appellate courts grant pre-trial 'temporary custody'?",
-    key_rule_or_holding: "Art. 213 applies regardless of legitimacy (ubi lex non distinguit). Custody remains with mother absent unfitness. Deleted CA's 'temporary custody' award.",
-    compelling_reasons_alleged_or_discussed: [
-      "Neglect",
-      "Abandonment",
-      "Unemployment"
-    ],
-    outcome: "Petition partly granted. Visitation maintained. Remanded for trial.",
-    exploitation_or_strategy_notes: [
-      "Common leverage point: mother uses Art 213/176 to obtain immediate custody.",
-      "SPA used to justify grandparents acting as custodians.",
-      "Non-custodial parent's remedy is visitation, not temporary custody, pending trial."
-    ],
-    primary_sources: [
-      {
-        label: "LawPhil PDF",
-        url: "https://lawphil.net/judjuris/juri2018/jul2018/pdf/gr_235498_2018.pdf"
-      }
-    ],
-    strategy_tags: [
-      "spa_delegation_to_grandparents",
-      "child_taken_from_school_by_relatives",
-      "trial_required_for_unfitness_allegations",
-      "visitation_rights_two_days_per_week"
     ]
   },
   {
@@ -432,8 +481,8 @@ export const KEY_CASES: CaseLaw[] = [
     ],
     primary_sources: [
       {
-        label: "Supreme Court (Representative)",
-        url: "#"
+        label: "Supreme Court (Google Search)",
+        url: "https://www.google.com/search?q=G.R.+No.+224497+Sison+v.+Sison+Supreme+Court+Decision"
       }
     ],
     strategy_tags: [
@@ -478,15 +527,17 @@ export const KEY_CASES: CaseLaw[] = [
     division: "Second Division",
     ponente: "Romero, J.",
     proceeding_type: "Visitation Rights petition",
-    context: "Parents separated. Mother denied father visitation rights to their illegitimate children.",
+    context: "Parents separated. Mother denied father visitation rights to their illegitimate children. Mother relocated abroad during litigation.",
     child_age: "Minors",
     article_213_issue: "Extent of visitation rights for illegitimate fathers.",
-    key_rule_or_holding: "While the mother has sole parental authority (Art. 176), the father has an inherent right to visitation which cannot be denied absent strict proof of danger to the child.",
+    key_rule_or_holding: "While the mother has sole parental authority (Art. 176), the father has an inherent right to visitation which cannot be denied absent strict proof of danger to the child. Taking the child out requires written maternal consent.",
     compelling_reasons_alleged_or_discussed: [],
-    outcome: "Visitation rights upheld.",
+    outcome: "Visitation rights upheld, subject to written consent for taking child out.",
     exploitation_or_strategy_notes: [
       "The fallback position: If you cannot win custody under Art 213, you MUST secure enforceable visitation.",
-      "Denial of visitation is often used as grounds to later argue for a change in custody due to 'psychological alienation'."
+      "Denial of visitation is often used as grounds to later argue for a change in custody due to 'psychological alienation'.",
+      "Shows a common leverage point: removal of the child (including travel) can be conditioned on written maternal consent.",
+      "Cross-border fact pattern highlights how relocation can harden the practical effect of maternal custody, making enforcement of visitation more difficult."
     ],
     primary_sources: [
       {
@@ -496,7 +547,10 @@ export const KEY_CASES: CaseLaw[] = [
     ],
     strategy_tags: [
       "visitation_rights_enforcement",
-      "illegitimate_father_rights"
+      "illegitimate_father_rights",
+      "visitation_rights_with_mother_consent",
+      "written_maternal_consent_required_to_take_child_out",
+      "child_relocated_abroad_during_litigation"
     ]
   },
   {
@@ -517,7 +571,7 @@ export const KEY_CASES: CaseLaw[] = [
       "Crucial defense against 'Step-Parent Adoptions' where the mother tries to erase the biological father.",
       "Proves that financial struggle is not grounds for losing parental rights."
     ],
-    primary_sources: [{ label: "LawPhil Full Text", url: "#" }],
+    primary_sources: [{ label: "LawPhil Full Text", url: "https://lawphil.net/judjuris/juri1998/sep1998/gr_105308_1998.html" }],
     strategy_tags: ["adoption_defense", "abandonment_definition"]
   },
   {
@@ -528,7 +582,7 @@ export const KEY_CASES: CaseLaw[] = [
     division: "First Division",
     ponente: "Bellosillo, J.",
     proceeding_type: "Custody of Illegitimate Child",
-    context: "Father recognized illegitimate child and sought custody after mother left child.",
+    context: "Father recognized illegitimate child and sought custody after mother left child. Mother filed Habeas Corpus.",
     child_age: "Minor",
     article_213_issue: "Recognition by father vs Art 176.",
     key_rule_or_holding: "Recognition of an illegitimate child by the father does not grant him custody, it only grants support and successional rights. Custody remains with the mother.",
@@ -536,10 +590,12 @@ export const KEY_CASES: CaseLaw[] = [
     outcome: "Custody with Mother.",
     exploitation_or_strategy_notes: [
       "Common misconception: Fathers think signing the birth certificate (Affidavit of Paternity) gives them custody rights. It does not.",
-      "It actually increases liability (Support) without increasing rights (Custody)."
+      "It actually increases liability (Support) without increasing rights (Custody).",
+      "Early and often-cited illustration of the 'default maternal custody' rule for illegitimate children in habeas corpus posture.",
+      "Demonstrates how an access or travel event (trip/outing) can become a custody 'grab' opportunity."
     ],
-    primary_sources: [{ label: "ChanRobles", url: "#" }],
-    strategy_tags: ["paternity_recognition_risks", "illegitimate_status"]
+    primary_sources: [{ label: "ChanRobles", url: "https://chanrobles.com/scdecisions/jurisprudence1995/nov1995/111180.php" }],
+    strategy_tags: ["paternity_recognition_risks", "illegitimate_status", "habeas_corpus_filed_for_custody"]
   },
   {
     case_id: "G.R. No. 127673",
@@ -559,8 +615,91 @@ export const KEY_CASES: CaseLaw[] = [
       "Illustrates the 'Nuclear Option' mothers have. If you take the child, they don't just sue for custody, they sue for Habeas Corpus.",
       "This is summary in nature—much faster than a full trial."
     ],
-    primary_sources: [{ label: "LawPhil", url: "#" }],
+    primary_sources: [{ label: "LawPhil", url: "https://lawphil.net/judjuris/juri2005/jul2005/gr_127673_2005.html" }],
     strategy_tags: ["habeas_corpus_risk", "immediate_return"]
+  },
+  {
+    case_id: "G.R. No. 122906",
+    case_name: "Tonog v. Court of Appeals",
+    decision_date: "2002-02-07",
+    court: "Supreme Court",
+    division: "Third Division",
+    ponente: "Panganiban, J.",
+    proceeding_type: "Custody",
+    context: "Illegitimate children. Mother left them with Father's relatives.",
+    child_age: "Minors",
+    article_213_issue: "Abandonment vs Art 213.",
+    key_rule_or_holding: "While abandonment is a ground to separate a child from the mother, it must be proven by 'compelling evidence'. The court remanded for further reception of evidence.",
+    compelling_reasons_alleged_or_discussed: ["Abandonment"],
+    outcome: "Remanded. Temporary custody with father pending trial.",
+    exploitation_or_strategy_notes: [
+      "Even when the mother leaves, it is not an automatic win. You still have to prove it in a full trial."
+    ],
+    primary_sources: [{ label: "ChanRobles", url: "https://chanrobles.com/scdecisions/jurisprudence2002/feb2002/122906.php" }],
+    strategy_tags: ["abandonment_evidence", "remand_delays"]
+  },
+  {
+    case_id: "G.R. No. 133 Phil. 884",
+    case_name: "Lacson v. San Jose-Lacson",
+    decision_date: "1968-08-30",
+    court: "Supreme Court",
+    division: "En Banc",
+    ponente: "Castro, J.",
+    proceeding_type: "Custody",
+    context: "Interpreting the Civil Code precursor to Art 213.",
+    child_age: "Under 7",
+    article_213_issue: "Mandatory nature of 'Shall'.",
+    key_rule_or_holding: "Established that 'shall' in the law is MANDATORY. Courts have no discretion to award custody to the father for children under 7 unless compelling reasons exist.",
+    compelling_reasons_alleged_or_discussed: [],
+    outcome: "Custody to Mother.",
+    exploitation_or_strategy_notes: [
+      "The origin of the strict interpretation.",
+      "Quoted the Code Commission: 'No man can sound the deep sorrows of a mother...'"
+    ],
+    primary_sources: [{ label: "LawPhil", url: "https://lawphil.net/judjuris/juri1968/aug1968/gr_l-23482_1968.html" }],
+    strategy_tags: ["mandatory_statute", "historical_context"]
+  },
+  {
+    case_id: "G.R. No. 206248",
+    case_name: "Grande v. Antonio",
+    decision_date: "2014-02-18",
+    court: "Supreme Court of the Philippines",
+    division: "TBD",
+    ponente: "TBD",
+    proceeding_type: "Petition for Review",
+    context: "Unmarried relationship produced two illegitimate children; father sought judicial approval of recognition with prayers for parental authority and surname change.",
+    child_age: "Minors",
+    article_213_issue: "Article 176 maternal authority baseline.",
+    key_rule_or_holding: "Illegitimate children are under the sole parental authority of the mother (Art. 176). Father cannot compel use of his surname, nor obtain custody via recognition alone.",
+    compelling_reasons_alleged_or_discussed: [],
+    outcome: "Father denied parental authority and mandatory surname change.",
+    exploitation_or_strategy_notes: [
+      "Illustrates a recurring 'workaround attempt': using a recognition/filiation proceeding to obtain parental authority.",
+      "Highlights that absent proof of maternal unfitness, the mother retains authority even if father acknowledges paternity."
+    ],
+    primary_sources: [{ label: "LawPhil", url: "https://lawphil.net/judjuris/juri2014/feb2014/gr_206248_2014.html" }],
+    strategy_tags: ["petition_for_recognition_with_custody_prayer", "attempt_to_compel_surname_change_for_illegitimate_child", "irr_voided_mandatory_use_of_fathers_surname"]
+  },
+  {
+    case_id: "G.R. No. 166682",
+    case_name: "Bagtas v. Santos",
+    decision_date: "2009-11-27",
+    court: "Supreme Court of the Philippines",
+    division: "Supreme Court",
+    ponente: "TBD",
+    proceeding_type: "Habeas Corpus / Custody",
+    context: "Habeas corpus proceeding involving competing custody claims.",
+    child_age: "Minor",
+    article_213_issue: "Procedural: Habeas Corpus scope.",
+    key_rule_or_holding: "In child-custody habeas corpus proceedings, the case is not mooted merely by producing the child; courts must proceed to determine custodial fitness and best interest.",
+    compelling_reasons_alleged_or_discussed: [],
+    outcome: "Remanded for best-interest determination.",
+    exploitation_or_strategy_notes: [
+      "Directly relevant to 'procedural exploitation': a party can try to moot a habeas corpus petition by temporarily producing the child, but Bagtas rejects this.",
+      "Supports an anti-evasion rule: custody disputes cannot be resolved by physical possession games alone."
+    ],
+    primary_sources: [{ label: "ChanRobles", url: "https://www.chanrobles.com/cralaw/2009novemberdecisions.php?id=1267" }],
+    strategy_tags: ["habeas_corpus_filed_for_custody", "remand_for_best_interest_determination", "trial_required_for_unfitness_allegations"]
   }
 ];
 
@@ -578,6 +717,20 @@ export const KEY_STATUTES: Statute[] = [
     description: 'Illegitimate children shall be under the sole and exclusive parental authority of the mother.',
     impact: 'Strips unmarried fathers of custodial rights entirely, limiting them to visitation only.',
     severity: 'Critical'
+  },
+  {
+    code: 'A.M. No. 24-11-02-SC',
+    name: 'Guidelines on Videoconferencing',
+    description: 'Effective Feb 2026. Explicitly authorizes virtual participation for all stages of proceedings, including mediation, from abroad.',
+    impact: 'Operationalizes "Electronic Visitation" as an enforceable right and allows OFW fathers to testify without returning to PH.',
+    severity: 'High'
+  },
+  {
+    code: 'A.M. No. 22-09-15-SC',
+    name: 'Rule on Intl. Child Abduction',
+    description: 'Operationalizes the Hague Convention for treaty partners. Sets expedited timelines and Central Authority (DSWD) role.',
+    impact: 'Provides a "Summary Return" mechanism for European/Treaty-partner cases, but highlights the gap for US cases.',
+    severity: 'High'
   },
   {
     code: 'RA 9262',
@@ -640,13 +793,20 @@ export const STRATEGIES: StrategyStep[] = [
   },
   {
     id: '4',
+    title: 'The Digital Pivot',
+    description: 'Leveraging A.M. No. 24-11-02-SC.',
+    actionItems: ['File Motion for Electronic Visitation immediately', 'Log every missed video call as "Contempt"', 'Testify via videoconference from Consulate'],
+    riskLevel: 'Medium'
+  },
+  {
+    id: '5',
     title: 'The HDO Hedge',
     description: 'Locking down the exit routes.',
     actionItems: ['File Criminal Case (e.g., Kidnapping/Failure to Return) to trigger Hold Departure Order', 'File Immigration Lookout Bulletin (ILBO) with DOJ', 'Alert US Embassy American Citizen Services'],
     riskLevel: 'Medium'
   },
   {
-    id: '5',
+    id: '6',
     title: 'The Exit Gauntlet',
     description: 'Clearing the Bureau of Immigration (BI).',
     actionItems: ['Secure DSWD Travel Clearance (if applicable)', 'Verify no active WLO/HDO against self', 'Carry Apostilled Court Orders + Certificate of Finality at airport'],

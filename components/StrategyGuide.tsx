@@ -1,6 +1,6 @@
 import React from 'react';
 import { STRATEGIES } from '../constants';
-import { ArrowRight, AlertOctagon, Anchor, Microscope, Plane, Users, Compass, Calendar, Shield, Brain, Sword, XCircle, Siren } from 'lucide-react';
+import { ArrowRight, AlertOctagon, Anchor, Microscope, Plane, Users, Compass, Calendar, Shield, Brain, Sword, XCircle, Siren, Video, Smartphone } from 'lucide-react';
 import CounselGuide from './CounselGuide';
 import BorderControl from './BorderControl';
 

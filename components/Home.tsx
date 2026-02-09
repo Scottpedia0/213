@@ -27,7 +27,7 @@ const Home: React.FC = () => {
               Project <span className="text-red-500">213</span>
             </h1>
             <p className="text-xl text-slate-300 leading-relaxed font-light">
-              The definitive tactical resource for navigating Article 213, the Hague Convention gap, and the strategic recovery of children in the Philippines.
+              A tactical resource for navigating Article 213, the Hague Convention gap, and the strategic recovery of children in the Philippines.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <div className="px-6 py-4 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">

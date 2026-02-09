@@ -1,6 +1,7 @@
 import React from 'react';
 import { TREATY_DATA } from '../constants';
 import { Globe, AlertOctagon, Scale, XCircle, CheckCircle } from 'lucide-react';
+import HagueMap from './HagueMap';
 
 const TreatyViolations: React.FC = () => {
   return (
@@ -11,6 +12,9 @@ const TreatyViolations: React.FC = () => {
           The Philippines is a signatory to major human rights treaties. Its domestic custody laws (Article 213, Article 176) systematically violate these commitments.
         </p>
       </div>
+
+      {/* NEW MAP COMPONENT */}
+      <HagueMap />
 
       <div className="grid gap-6">
         {TREATY_DATA.map((treaty) => (

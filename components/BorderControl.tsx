@@ -129,9 +129,14 @@ const BorderControl: React.FC = () => {
                 Do not attempt to exit without a <strong>Bureau of Immigration Derogatory Record Check</strong>. This costs ~500 PHP and confirms if your name or the child's name is on a Watchlist.
             </p>
         </div>
-        <button className="whitespace-nowrap px-6 py-3 bg-white text-amber-900 font-bold border border-amber-200 rounded-lg hover:bg-amber-100 transition-colors">
+        <a 
+            href="https://immigration.gov.ph/wp-content/uploads/pdf/certification/CCS-A-CDR-2016.pdf" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="whitespace-nowrap px-6 py-3 bg-white text-amber-900 font-bold border border-amber-200 rounded-lg hover:bg-amber-100 transition-colors inline-block text-center"
+        >
             Download BI Form
-        </button>
+        </a>
       </div>
 
     </div>

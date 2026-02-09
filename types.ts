@@ -30,6 +30,8 @@ export interface CaseLaw {
     tender_age_sentence: string;
     notes: string[];
   };
+  citations_internal?: string[];
+  citations_external?: string[];
 }
 
 export interface Statute {
