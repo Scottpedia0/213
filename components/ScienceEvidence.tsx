@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { SCIENCE_DATA } from '../constants';
 import { Microscope, Brain, Users, Activity, CheckCircle, Quote } from 'lucide-react';
@@ -7,9 +8,9 @@ const ScienceEvidence: React.FC = () => {
     <div className="max-w-6xl mx-auto space-y-12 pt-8 pb-12">
       
       <div className="text-center space-y-4">
-        <h2 className="text-3xl font-bold text-slate-900 font-serif">The Science vs. Article 213</h2>
+        <h2 className="text-3xl font-bold text-slate-900 font-serif">Modern Science vs. Obsolete Statutes</h2>
         <p className="text-slate-600 max-w-2xl mx-auto text-lg">
-          Article 213 is built on the "Tender Years" doctrine of 1839. Modern developmental science debunks every assumption it rests on.
+          Article 213 is built on the "Tender Years" doctrine of 1839. Modern developmental science offers a different perspective on child well-being.
         </p>
       </div>
 

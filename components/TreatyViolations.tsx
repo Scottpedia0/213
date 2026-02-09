@@ -1,9 +1,14 @@
+
 import React from 'react';
 import { TREATY_DATA } from '../constants';
-import { Globe, AlertOctagon, Scale, XCircle, CheckCircle } from 'lucide-react';
+import { Globe, AlertOctagon, Scale, XCircle, CheckCircle, Bot, ArrowRight } from 'lucide-react';
 import HagueMap from './HagueMap';
 
 const TreatyViolations: React.FC = () => {
+  const openAiAgent = () => {
+    window.dispatchEvent(new CustomEvent('open-ai-strategy'));
+  };
+
   return (
     <div className="max-w-5xl mx-auto space-y-12 pt-8 pb-12">
       <div className="text-center space-y-4">
@@ -15,6 +20,26 @@ const TreatyViolations: React.FC = () => {
 
       {/* NEW MAP COMPONENT */}
       <HagueMap />
+
+      {/* AI Contextual Help */}
+      <div className="bg-slate-900 rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg">
+        <div className="flex items-center gap-4">
+            <div className="bg-blue-600 p-3 rounded-full text-white">
+                <Globe size={24} />
+            </div>
+            <div>
+                <h4 className="text-white font-bold text-lg">Does the Hague Convention apply to me?</h4>
+                <p className="text-slate-300 text-sm">It depends entirely on the "Accession" status of your home country.</p>
+            </div>
+        </div>
+        <button 
+            onClick={openAiAgent}
+            className="flex items-center gap-2 bg-white text-slate-900 px-6 py-3 rounded-lg font-bold hover:bg-blue-50 transition-colors shrink-0"
+        >
+            <Bot size={18} className="text-blue-600"/>
+            Analyze My Jurisdiction <ArrowRight size={18} />
+        </button>
+      </div>
 
       <div className="grid gap-6">
         {TREATY_DATA.map((treaty) => (

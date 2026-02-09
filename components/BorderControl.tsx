@@ -1,16 +1,31 @@
+
 import React from 'react';
-import { Plane, AlertTriangle, FileCheck, Siren, XCircle, Book } from 'lucide-react';
+import { Plane, AlertTriangle, FileCheck, Siren, XCircle, Book, Bot, ArrowRight, CheckSquare } from 'lucide-react';
 
 const BorderControl: React.FC = () => {
+
+  const openAiAgent = () => {
+    window.dispatchEvent(new CustomEvent('open-ai-strategy'));
+  };
+
   return (
     <div className="max-w-5xl mx-auto space-y-12 pt-8 pb-12">
       
       {/* Header */}
       <div className="text-center space-y-4">
-        <h2 className="text-3xl font-bold text-slate-900 font-serif">The Exit Maze</h2>
+        <h2 className="text-3xl font-bold text-slate-900 font-serif">Exit Clearance Protocols</h2>
         <p className="text-slate-600 max-w-2xl mx-auto text-lg">
-          Winning custody in court does not guarantee you can leave the country. The Bureau of Immigration (BI) is the final boss.
+          Winning custody in court is only the first step. The Bureau of Immigration (BI) serves as the Primary Regulatory Authority for departure.
         </p>
+        <div className="flex justify-center pt-2">
+            <button 
+                onClick={openAiAgent}
+                className="flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-100 transition-colors border border-blue-200"
+            >
+                <Bot size={16} />
+                Check My Exit Eligibility <ArrowRight size={14} />
+            </button>
+        </div>
       </div>
 
       {/* The 3 Barriers */}
@@ -52,7 +67,7 @@ const BorderControl: React.FC = () => {
           <p className="text-slate-600 text-sm leading-relaxed mb-4">
             Required for Filipino minors traveling alone or with a non-relative.
             <br/><br/>
-            <strong>The Trap:</strong> If the child is illegitimate, the father is legally a "non-relative" for travel purposes without maternal consent.
+            <strong>Regulatory Complexity:</strong> If the child is illegitimate, the father is legally a "non-relative" for travel purposes without maternal consent.
           </p>
         </div>
       </div>
@@ -66,7 +81,7 @@ const BorderControl: React.FC = () => {
             <div>
                 <h3 className="text-2xl font-bold text-slate-900 font-serif mb-4">The Dual Passport Dilemma</h3>
                 <p className="text-slate-700 leading-relaxed mb-6">
-                    A common misconception is that a US Passport acts as a "Get Out of Jail Free" card. It does not.
+                    A common misconception is that a US Passport exempts the child from exit controls. It does not.
                 </p>
                 <div className="grid md:grid-cols-2 gap-6">
                     <div className="bg-white p-5 rounded-xl border border-slate-200">
@@ -99,7 +114,7 @@ const BorderControl: React.FC = () => {
                     <div className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center font-bold text-sm shrink-0">1</div>
                     <div>
                         <h4 className="font-bold text-lg">Never travel without the "Certificate of Finality"</h4>
-                        <p className="text-slate-400 text-sm">A court order awarding custody is useless at the airport unless it has the "Certificate of Finality" proving the appeal period has lapsed.</p>
+                        <p className="text-slate-400 text-sm">A court order awarding custody is insufficient at the airport unless it has the "Certificate of Finality" proving the appeal period has lapsed.</p>
                     </div>
                 </div>
                  <div className="flex gap-4">
@@ -113,10 +128,31 @@ const BorderControl: React.FC = () => {
                     <div className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center font-bold text-sm shrink-0">3</div>
                     <div>
                         <h4 className="font-bold text-lg">Anticipate "Offloading"</h4>
-                        <p className="text-slate-400 text-sm">Immigration officers have absolute discretion. If they suspect the travel is unauthorized by the mother (for illegitimate children), they will prevent boarding even without a court order.</p>
+                        <p className="text-slate-400 text-sm">Immigration officers have broad discretion. If they suspect the travel is unauthorized by the mother (for illegitimate children), they will prevent boarding even without a court order.</p>
                     </div>
                 </div>
             </div>
+        </div>
+      </div>
+
+      {/* Pre-Departure Checklist */}
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+        <h4 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+            <CheckSquare size={24} className="text-green-600"/> Pre-Flight Clearance Checklist
+        </h4>
+        <div className="space-y-4">
+            <label className="flex items-start gap-3 p-3 bg-slate-50 rounded-lg cursor-pointer">
+                <input type="checkbox" className="mt-1 w-4 h-4 text-blue-600 rounded focus:ring-blue-500" />
+                <span className="text-sm text-slate-700"><strong>Derogatory Record Check:</strong> Obtained "Certification of No Derogatory Record" (Form CCS-A-CDR) from BI Main Office (Intramuros) 30 days prior.</span>
+            </label>
+            <label className="flex items-start gap-3 p-3 bg-slate-50 rounded-lg cursor-pointer">
+                <input type="checkbox" className="mt-1 w-4 h-4 text-blue-600 rounded focus:ring-blue-500" />
+                <span className="text-sm text-slate-700"><strong>HDO Status:</strong> If prior cases exist, file "Motion for Provisional Lift of HDO" for specific travel dates.</span>
+            </label>
+            <label className="flex items-start gap-3 p-3 bg-slate-50 rounded-lg cursor-pointer">
+                <input type="checkbox" className="mt-1 w-4 h-4 text-blue-600 rounded focus:ring-blue-500" />
+                <span className="text-sm text-slate-700"><strong>DSWD Bypass:</strong> If mother refuses consent, carry certified true copy of Court Order granting "Judicial Authorization to Travel".</span>
+            </label>
         </div>
       </div>
 
@@ -124,9 +160,9 @@ const BorderControl: React.FC = () => {
       <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 flex flex-col md:flex-row items-center gap-6">
         <AlertTriangle className="text-amber-600 shrink-0" size={32} />
         <div>
-            <h4 className="text-lg font-bold text-amber-900">Pre-Departure Check Required</h4>
+            <h4 className="text-lg font-bold text-amber-900">Official BI Form</h4>
             <p className="text-sm text-amber-800">
-                Do not attempt to exit without a <strong>Bureau of Immigration Derogatory Record Check</strong>. This costs ~500 PHP and confirms if your name or the child's name is on a Watchlist.
+                Download the official Bureau of Immigration certification request form.
             </p>
         </div>
         <a 

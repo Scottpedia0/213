@@ -1,6 +1,7 @@
+
 import React, { useState } from 'react';
 import { KEY_CASES } from '../constants';
-import { Search, FileText, ChevronRight, Scale, Tag, ExternalLink } from 'lucide-react';
+import { Search, FileText, ChevronRight, Scale, Tag, ExternalLink, Bot } from 'lucide-react';
 
 const CaseLawDb: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -11,6 +12,10 @@ const CaseLawDb: React.FC = () => {
     c.strategy_tags?.some(t => t.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
+  const openAiAgent = () => {
+    window.dispatchEvent(new CustomEvent('open-ai-strategy'));
+  };
+
   return (
     <div className="max-w-6xl mx-auto space-y-8 pb-12">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-8">
@@ -18,15 +23,23 @@ const CaseLawDb: React.FC = () => {
           <h2 className="text-3xl font-bold text-slate-900">The Case Atlas</h2>
           <p className="text-slate-500 mt-2 text-lg">Jurisprudential map of Article 213 and custody disputes.</p>
         </div>
-        <div className="relative w-full md:w-96">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
-          <input 
-            type="text" 
-            placeholder="Search cases, tags, or concepts..." 
-            className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-900 shadow-sm"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+        <div className="flex flex-col gap-2 w-full md:w-96">
+            <div className="relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
+                <input 
+                    type="text" 
+                    placeholder="Search cases, tags, or concepts..." 
+                    className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-900 shadow-sm"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+            </div>
+            <button 
+                onClick={openAiAgent}
+                className="flex items-center justify-center gap-2 text-xs font-bold text-slate-500 hover:text-blue-600 transition-colors py-1"
+            >
+                <Bot size={14}/> Can't find a precedent? Ask AI
+            </button>
         </div>
       </div>
 

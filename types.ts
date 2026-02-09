@@ -1,3 +1,4 @@
+
 export interface SourceLink {
   label: string;
   url: string;
@@ -90,4 +91,20 @@ export interface Contact {
   contactInfo: string[];
   utility: string;
   category: 'Emergency' | 'Legal' | 'Government' | 'US';
+}
+
+// --- AI & CHAT TYPES ---
+
+export interface ChatMessage {
+  role: 'user' | 'model';
+  text: string;
+  timestamp: Date;
+}
+
+export interface ActionPlan {
+  riskAssessment: string;
+  immediateActions: string[];
+  legalStrategy: string[];
+  longTermGoals: string[];
+  requiredResources: string[];
 }

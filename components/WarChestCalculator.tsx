@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { DollarSign, Plane, Building, User, FileText, AlertTriangle, RefreshCw } from 'lucide-react';
+import { DollarSign, Plane, Building, User, FileText, AlertTriangle, RefreshCw, Bot, ArrowRight, Video } from 'lucide-react';
 
 const WarChestCalculator: React.FC = () => {
   const [inputs, setInputs] = useState({
@@ -14,6 +15,10 @@ const WarChestCalculator: React.FC = () => {
     piBudget: 5000,
     otherLegal: 10000
   });
+
+  const openAiAgent = () => {
+    window.dispatchEvent(new CustomEvent('open-ai-strategy'));
+  };
 
   const calculateTotal = () => {
     const legalBase = inputs.lawyerAcceptance + inputs.otherLegal;
@@ -33,9 +38,9 @@ const WarChestCalculator: React.FC = () => {
   return (
     <div className="max-w-5xl mx-auto pt-8 pb-12 space-y-8">
       <div className="text-center space-y-4">
-        <h2 className="text-3xl font-bold text-slate-900 font-serif">The War Chest Calculator</h2>
+        <h2 className="text-3xl font-bold text-slate-900 font-serif">Litigation Financial Model</h2>
         <p className="text-slate-600 max-w-2xl mx-auto text-lg">
-          Litigation in the Philippines is an extractive industry. Use this tool to model your financial exposure over a typical 5-year custody battle.
+          Litigation in the Philippines requires significant financial planning. Use this tool to model your total exposure over a typical 5-year custody case.
         </p>
       </div>
 
@@ -110,7 +115,7 @@ const WarChestCalculator: React.FC = () => {
              <div>
                 <p className="text-slate-400 text-sm uppercase tracking-widest font-bold mb-1">Estimated Total Exposure</p>
                 <h3 className="text-5xl md:text-6xl font-bold font-mono text-red-500">${totals.total.toLocaleString()}</h3>
-                <p className="text-xs text-slate-500 mt-2">*Excluding bribery, extortion, or emergency medical costs.</p>
+                <p className="text-xs text-slate-500 mt-2">*Excluding emergency medical or contingency costs.</p>
              </div>
              <div className="flex gap-4">
                 <div className="text-center">
@@ -146,16 +151,64 @@ const WarChestCalculator: React.FC = () => {
              </div>
           </div>
 
-          <div className="bg-amber-50 border border-amber-200 p-6 rounded-xl flex items-start gap-4">
-             <AlertTriangle className="text-amber-600 shrink-0 mt-1" />
-             <div>
-                <h4 className="font-bold text-amber-900 text-sm">Strategic Insight</h4>
-                <p className="text-sm text-amber-800 mt-1 leading-relaxed">
-                    Notice how <strong>Travel</strong> is likely your biggest expense. This is why the opposing counsel's main tactic is to schedule hearings and then cancel them the morning of. They bleed you on flights, not legal fees.
-                    <br/><br/>
-                    <strong>Mitigation:</strong> Hire counsel with "Substitute Appearance" authority or move to the Philippines temporarily.
-                </p>
-             </div>
+          {/* COST MITIGATION STRATEGY */}
+          <div className="bg-white rounded-xl border border-blue-200 overflow-hidden shadow-sm">
+            <div className="bg-blue-50 p-4 border-b border-blue-100 flex items-center gap-3">
+                <div className="bg-blue-600 p-2 rounded text-white"><Video size={18}/></div>
+                <div>
+                    <h4 className="font-bold text-blue-900 text-sm">Cost Mitigation Protocol</h4>
+                    <p className="text-[10px] text-blue-700">Strategic reduction of logistics burn</p>
+                </div>
+            </div>
+            <div className="p-6 grid md:grid-cols-2 gap-6">
+                <div>
+                    <h5 className="font-bold text-slate-900 text-sm mb-2">1. Virtual Testimony (A.M. No. 20-12-01-SC)</h5>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                        Mitigate travel attrition by petitioning for <strong>Remote Videoconferencing</strong>. The Supreme Court now allows witnesses based abroad to testify via secure video link. 
+                    </p>
+                    <div className="mt-2 text-xs bg-slate-50 p-2 rounded border border-slate-100 text-slate-500">
+                        <strong>Action:</strong> File "Motion for Videoconferencing" citing cost/distance.
+                    </div>
+                </div>
+                <div>
+                    <h5 className="font-bold text-slate-900 text-sm mb-2">2. Fee Structure Management</h5>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                        Avoid "Appearance Fee Farming". Negotiate a stage-based fee (Acceptance + Per Pleading) to align incentives with written output rather than physical attendance.
+                    </p>
+                    <div className="mt-2 text-xs bg-slate-50 p-2 rounded border border-slate-100 text-slate-500">
+                        <strong>Action:</strong> Request "Capped Appearance Fees" in Engagement Letter.
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-amber-50 border border-amber-200 p-6 rounded-xl flex items-start gap-4">
+                <AlertTriangle className="text-amber-600 shrink-0 mt-1" />
+                <div>
+                    <h4 className="font-bold text-amber-900 text-sm">Strategic Insight</h4>
+                    <p className="text-sm text-amber-800 mt-1 leading-relaxed">
+                        Notice how <strong>Travel</strong> is likely your biggest expense. This is why procedural delays (hearing cancellations) impact you disproportionately compared to local litigants.
+                    </p>
+                </div>
+            </div>
+
+             {/* AI CALL TO ACTION */}
+             <div className="bg-white border border-slate-200 p-6 rounded-xl flex items-center justify-between shadow-sm">
+                <div className="flex items-center gap-3">
+                     <Bot className="text-blue-600" size={28} />
+                     <div>
+                        <h4 className="font-bold text-slate-900 text-sm">Detailed Efficiency Plan</h4>
+                        <p className="text-xs text-slate-500">Ask the Case Analyst for specific cost-saving motions.</p>
+                     </div>
+                </div>
+                <button 
+                    onClick={openAiAgent}
+                    className="p-2 bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 hover:text-slate-900 transition-colors"
+                >
+                    <ArrowRight size={20} />
+                </button>
+            </div>
           </div>
         </div>
       </div>

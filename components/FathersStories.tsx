@@ -1,18 +1,32 @@
+
 import React, { useState } from 'react';
-import { Users, HeartCrack, Briefcase, ShieldAlert, DollarSign, Ban, Quote, MessageSquare, Gavel } from 'lucide-react';
+import { Users, HeartCrack, Briefcase, ShieldAlert, DollarSign, Ban, Quote, MessageSquare, Gavel, Bot, ArrowRight, ArrowUpRight, Scale } from 'lucide-react';
 
 const FathersStories: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'patterns' | 'cases'>('patterns');
+
+  const openAiAgent = () => {
+    window.dispatchEvent(new CustomEvent('open-ai-strategy'));
+  };
 
   return (
     <div className="max-w-6xl mx-auto space-y-12 pt-8 pb-12">
       {/* Hero */}
       <div className="text-center space-y-6">
-        <h2 className="text-4xl font-bold text-slate-900 font-serif">The Human Cost</h2>
+        <h2 className="text-4xl font-bold text-slate-900 font-serif">The Human Impact</h2>
         <p className="text-slate-600 max-w-3xl mx-auto text-lg leading-relaxed">
-           Behind the statutes and court orders lie the human stories of systemic erasure. 
-           These are not isolated incidents; they are the predictable results of a legal framework designed to exclude fathers.
+           Behind the statutes and court orders lies the human cost of systemic displacement via outdated 19th-century frameworks. 
+           These narratives illustrate the outcomes of a legal framework that has not yet adapted to modern family structures.
         </p>
+        <div className="flex justify-center">
+             <button 
+                onClick={openAiAgent}
+                className="flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-600 transition-colors shadow-lg"
+             >
+                <Bot size={18} />
+                Is this your situation? Get Analysis <ArrowRight size={18} />
+             </button>
+        </div>
       </div>
 
       {/* Tab Navigation */}
@@ -38,9 +52,9 @@ const FathersStories: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-bold uppercase tracking-wider">
-                        <Users size={14} /> The Demographic Crisis
+                        <Users size={14} /> The Demographic Reality
                     </div>
-                    <h3 className="text-3xl font-bold text-slate-900 font-serif">The 57% Erasure</h3>
+                    <h3 className="text-3xl font-bold text-slate-900 font-serif">The 57% Gap</h3>
                     <p className="text-slate-600 leading-relaxed">
                         According to the Philippine Statistics Authority (PSA), over <strong className="text-slate-900">57% of all children</strong> born in the Philippines are illegitimate (born out of wedlock).
                     </p>
@@ -63,21 +77,21 @@ const FathersStories: React.FC = () => {
                         <li className="flex gap-4">
                             <div className="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold shrink-0">1</div>
                             <div>
-                                <strong className="block text-slate-900 text-sm">No Decision Making</strong>
+                                <strong className="block text-slate-900 text-sm">Decision Making</strong>
                                 <p className="text-xs text-slate-500">School, medical care, and religion are solely the mother's choice.</p>
                             </div>
                         </li>
                         <li className="flex gap-4">
                             <div className="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold shrink-0">2</div>
                             <div>
-                                <strong className="block text-slate-900 text-sm">No Travel Rights</strong>
+                                <strong className="block text-slate-900 text-sm">Travel Rights</strong>
                                 <p className="text-xs text-slate-500">You cannot take your child abroad without the mother's written consent (DSWD clearance).</p>
                             </div>
                         </li>
                         <li className="flex gap-4">
                             <div className="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold shrink-0">3</div>
                             <div>
-                                <strong className="block text-slate-900 text-sm">Automatic Loss</strong>
+                                <strong className="block text-slate-900 text-sm">Automatic Status</strong>
                                 <p className="text-xs text-slate-500">You do not lose custody in court. You never had it to begin with.</p>
                             </div>
                         </li>
@@ -96,16 +110,16 @@ const FathersStories: React.FC = () => {
                         </div>
                         <h3 className="text-3xl font-bold font-serif mb-4">The OFW Paradox</h3>
                         <p className="text-slate-300 leading-relaxed mb-6">
-                            Nearly 1 million Filipino men work overseas to support their families. The legal system rewards this sacrifice by labelling it "Abandonment."
+                            Nearly 1 million Filipino men work overseas to support their families. The legal system sometimes penalizes this sacrifice by interpreting it as "Absence."
                         </p>
                         <div className="space-y-4">
                             <div className="p-4 bg-white/5 rounded-lg border border-white/10">
                                 <strong className="block text-white text-sm mb-1">The Scenario</strong>
-                                <p className="text-xs text-slate-400">Father works in Saudi/Dubai/Singapore. Sends 80% of income home. Mother leaves children with grandparents to start a new relationship.</p>
+                                <p className="text-xs text-slate-400">Father works in Saudi/Dubai/Singapore. Sends 80% of income home. Mother leaves children with grandparents.</p>
                             </div>
                             <div className="p-4 bg-white/5 rounded-lg border border-white/10">
-                                <strong className="block text-white text-sm mb-1">The Legal Trap</strong>
-                                <p className="text-xs text-slate-400">When Father returns to claim children, Court rules that the "Status Quo" is with the mother's family, and his years abroad constitute "lack of psychological presence."</p>
+                                <strong className="block text-white text-sm mb-1">The Legal Result</strong>
+                                <p className="text-xs text-slate-400">When Father returns, courts may rule that the "Status Quo" is with the mother's family, citing his years abroad as "lack of psychological presence."</p>
                             </div>
                         </div>
                     </div>
@@ -130,16 +144,16 @@ const FathersStories: React.FC = () => {
             {/* 3. The 9262 Weapon */}
             <div className="grid md:grid-cols-3 gap-8">
                 <div className="md:col-span-1">
-                    <h3 className="text-2xl font-bold text-slate-900 font-serif mb-4">The 9262 Weapon</h3>
+                    <h3 className="text-2xl font-bold text-slate-900 font-serif mb-4">The 9262 Procedural Paradox</h3>
                     <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                        RA 9262 (Anti-VAWC) is a noble law designed to protect women. However, it is routinely weaponized in custody battles because it allows for <strong>Ex-Parte TPOs</strong> (Temporary Protection Orders).
+                        RA 9262 (Anti-VAWC) is a noble law designed to protect women. However, its procedural mechanisms, specifically <strong>Ex-Parte TPOs</strong>, are sometimes utilized in custody disputes.
                     </p>
                     <div className="p-4 bg-orange-50 rounded-xl border border-orange-100">
                         <div className="flex items-center gap-2 mb-2 text-orange-800 font-bold text-sm">
-                            <ShieldAlert size={16}/> The "Checkmate" Move
+                            <ShieldAlert size={16}/> Strategic Filing
                         </div>
                         <p className="text-xs text-orange-900">
-                            Lawyers advise mothers to file VAWC immediately upon separation. It instantly grants her custody and evicts the father, setting a "new normal" before the father even gets a court date.
+                            Filing VAWC immediately upon separation can grant provisional custody and evict the father, establishing a "new normal" before a full hearing.
                         </p>
                     </div>
                 </div>
@@ -147,17 +161,17 @@ const FathersStories: React.FC = () => {
                     <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                         <h4 className="font-bold text-slate-900 mb-2">Psychological Violence</h4>
                         <p className="text-xs text-slate-500 mb-4">
-                            Defined so broadly that "marital infidelity" or "denial of financial support" counts as violence, triggering a TPO.
+                            Defined broadly, actions such as "marital infidelity" or "denial of financial support" can be categorized as violence, triggering a TPO.
                         </p>
                         <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                             <div className="h-full bg-red-500 w-[85%]"></div>
                         </div>
-                        <p className="text-[10px] text-slate-400 mt-1">85% of Custody Defense involves 9262</p>
+                        <p className="text-[10px] text-slate-400 mt-1">Common factor in custody defense</p>
                     </div>
                     <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                        <h4 className="font-bold text-slate-900 mb-2">The "Economic Abuse" Card</h4>
+                        <h4 className="font-bold text-slate-900 mb-2">The "Economic Abuse" Clause</h4>
                         <p className="text-xs text-slate-500 mb-4">
-                            If a father stops sending money because he is denied visitation, he is charged with Economic Abuse (a criminal offense).
+                            If a father stops sending money due to denied visitation, he risks being charged with Economic Abuse (a criminal offense).
                         </p>
                         <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                             <div className="h-full bg-orange-500 w-[90%]"></div>
@@ -166,7 +180,7 @@ const FathersStories: React.FC = () => {
                     </div>
                     <div className="col-span-2 bg-slate-50 p-4 rounded-xl border border-slate-200">
                         <p className="text-sm text-slate-700 italic">
-                            "My lawyer told me: 'If you fight for custody, she will file VAWC and you will go to jail.' So I signed the waiver." — Anonymous Father
+                            "My lawyer told me: 'If you fight for custody, she will file VAWC.' So I signed the waiver." — Anonymous Father
                         </p>
                     </div>
                 </div>
@@ -177,7 +191,7 @@ const FathersStories: React.FC = () => {
                 <div className="flex items-center gap-4 mb-8">
                     <HeartCrack className="text-slate-400" size={32} />
                     <div>
-                        <h3 className="text-2xl font-bold text-slate-900 font-serif">The Visitation Void</h3>
+                        <h3 className="text-2xl font-bold text-slate-900 font-serif">The Visitation Gap</h3>
                         <p className="text-sm text-slate-500">Rights on paper vs. Reality on the ground</p>
                     </div>
                 </div>
@@ -185,24 +199,24 @@ const FathersStories: React.FC = () => {
                 <div className="grid md:grid-cols-2 gap-12">
                     <div className="space-y-6">
                         <p className="text-slate-600 leading-relaxed">
-                            Even when a father wins "Visitation Rights" in court, enforcement is non-existent. There is no "Contempt of Court" police squad.
+                            Even when a father wins "Visitation Rights" in court, enforcement remains a challenge. There is no specialized police unit for civil visitation enforcement.
                         </p>
                         <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                            <strong className="block text-slate-900 mb-2">The Typical Sunday Scenario</strong>
+                            <strong className="block text-slate-900 mb-2">The Enforcement Loop</strong>
                             <ol className="space-y-4 text-sm text-slate-600 list-decimal pl-4">
                                 <li>Father arrives at mother's house with Court Order.</li>
-                                <li>Gate is locked. "Yaya" says child is sick or not home.</li>
+                                <li>Access is denied (e.g., "Child is sick").</li>
                                 <li>Father calls Barangay / Police.</li>
-                                <li>Police arrive: "Sir, this is a domestic civil matter. We cannot enter private property. Go back to court."</li>
-                                <li>Father must file a motion to cite mother in contempt (takes 6 months).</li>
+                                <li>Police arrive: "Sir, this is a domestic civil matter. We cannot enter private property."</li>
+                                <li>Remedy: Father must file a motion to cite mother in contempt (takes months).</li>
                             </ol>
                         </div>
                     </div>
                     <div className="bg-slate-50 p-8 rounded-2xl flex flex-col justify-center items-center text-center">
                         <DollarSign size={48} className="text-green-600 mb-4" />
-                        <h4 className="text-xl font-bold text-slate-900 mb-2">The Cost of a Hug</h4>
+                        <h4 className="text-xl font-bold text-slate-900 mb-2">The Cost of Access</h4>
                         <p className="text-slate-600 text-sm mb-6">
-                            Because visitation is not enforced, fathers are forced to "buy" access.
+                            Because visitation enforcement is weak, fathers often face significant costs to maintain access.
                         </p>
                         <div className="grid grid-cols-2 gap-4 w-full">
                             <div className="bg-white p-3 rounded shadow-sm">
@@ -211,7 +225,7 @@ const FathersStories: React.FC = () => {
                             </div>
                             <div className="bg-white p-3 rounded shadow-sm">
                                 <span className="block text-xs text-slate-400 uppercase">Enforcement</span>
-                                <span className="block font-bold text-red-600">ZERO</span>
+                                <span className="block font-bold text-red-600">Low</span>
                             </div>
                         </div>
                     </div>
@@ -223,7 +237,7 @@ const FathersStories: React.FC = () => {
                 <div className="flex items-center gap-4 mb-8">
                     <MessageSquare className="text-slate-400" size={32} />
                     <div>
-                        <h3 className="text-2xl font-bold text-slate-900 font-serif">The Forum Patterns</h3>
+                        <h3 className="text-2xl font-bold text-slate-900 font-serif">Forum Narratives</h3>
                         <p className="text-sm text-slate-500">Pattern evidence from Philippine Legal Forums</p>
                     </div>
                 </div>
@@ -241,7 +255,7 @@ const FathersStories: React.FC = () => {
                                 <li>Father raises child alone for years while Mother is absent.</li>
                                 <li>Mother returns (often from abroad or after a failed relationship).</li>
                                 <li>Mother demands custody citing <strong>Article 213</strong>.</li>
-                                <li>Barangay and DSWD tell the father: <em className="text-slate-800">"The law is clear. The child belongs to the mother."</em></li>
+                                <li>Authorities cite the law: <em className="text-slate-800">"The law is clear. The child belongs to the mother."</em></li>
                                 <li>Father is relegated to visitor status despite being the primary parent.</li>
                             </ol>
                         </div>
@@ -294,11 +308,18 @@ const FathersStories: React.FC = () => {
                             But under Article 213, Michael was handed back to his mother — even when she wasn't physically present. Joey was granted "visitorial rights." His son grew up shuttled between caregivers, with a father who wanted him full-time standing on the other side of a law that said biology only counts when it's the mother's.
                         </p>
                     </div>
-                    <div className="bg-red-50 p-5 rounded-xl border-l-4 border-red-500">
-                        <strong className="block text-red-900 text-sm mb-2 uppercase tracking-wide">Impact on the Child</strong>
-                        <p className="text-red-800 text-sm">
-                            Michael spent years in the care of rotating relatives while his mother worked abroad and his father — present, willing, and able — was legally sidelined. The law didn't ask who was actually raising this boy. It asked who gave birth to him.
+                    {/* STRATEGIC PIVOT: BRIONES */}
+                    <div className="bg-blue-50 p-6 rounded-xl border border-blue-200">
+                        <div className="flex items-center gap-2 mb-2">
+                            <Scale size={20} className="text-blue-600" />
+                            <h4 className="text-sm font-bold text-blue-900 uppercase tracking-wide">Strategic Pivot (Modern Approach)</h4>
+                        </div>
+                        <p className="text-sm text-blue-800 leading-relaxed mb-4">
+                            If litigating this today, the father should petition for <strong>Substitute Parental Authority (Art. 216)</strong> while the mother is abroad, rather than attacking her fitness directly. The "default" shifts to the surviving parent or grandparents <em>only if</em> the mother is "absent".
                         </p>
+                        <button onClick={openAiAgent} className="flex items-center gap-2 text-xs font-bold text-blue-700 bg-white px-3 py-2 rounded-lg border border-blue-100 hover:bg-blue-50">
+                            Ask AI: "How to claim Substitute Parental Authority" <ArrowUpRight size={14}/>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -350,11 +371,20 @@ const FathersStories: React.FC = () => {
                             The Supreme Court said no. Because Stolk and Catherine were not married, Winston Jr. was "illegitimate" under Philippine law, and parental authority belonged exclusively to the mother — even a dead one. Custody went to Catherine's collateral relatives instead of to the boy's living, verified, willing father.
                         </p>
                     </div>
-                    <div className="bg-blue-50 p-5 rounded-xl border-l-4 border-blue-500">
-                        <strong className="block text-blue-900 text-sm mb-2 uppercase tracking-wide">Impact on the Child</strong>
-                        <p className="text-blue-800 text-sm">
-                            Winston Jr. lost his mother at birth. His father was alive, proven, and wanted him. The law handed him to extended relatives because the code doesn't recognize an unmarried father's right to his own child — not even when the mother is gone. A boy who could have been raised by his dad grew up without either parent.
+                    {/* STRATEGIC PIVOT: STOLK */}
+                    <div className="bg-blue-50 p-6 rounded-xl border border-blue-200">
+                        <div className="flex items-center gap-2 mb-2">
+                            <Scale size={20} className="text-blue-600" />
+                            <h4 className="text-sm font-bold text-blue-900 uppercase tracking-wide">Strategic Pivot (Illegitimacy)</h4>
+                        </div>
+                        <p className="text-sm text-blue-800 leading-relaxed mb-4">
+                            <strong>Statutory Deadlock:</strong> The "Paternity Gap" exists because fathers are not automatically the "substitute" authority.
+                            <br/><br/>
+                            <strong>Remedy:</strong> Fathers in this position must file for Judicial Admission of Paternity combined with a specific petition to be appointed judicial guardian, citing that grandparents are "unfit" or "too old" (Art 216 order of preference).
                         </p>
+                        <button onClick={openAiAgent} className="flex items-center gap-2 text-xs font-bold text-blue-700 bg-white px-3 py-2 rounded-lg border border-blue-100 hover:bg-blue-50">
+                            Ask AI: "Explain the Paternity Gap" <ArrowUpRight size={14}/>
+                        </button>
                     </div>
                 </div>
             </div>

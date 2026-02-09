@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Search, ShieldAlert, ShieldCheck, Info, Globe, X } from 'lucide-react';
+import { Search, ShieldAlert, ShieldCheck, Info, Globe, X, Filter } from 'lucide-react';
 
 interface CountryStatus {
   code: string;
@@ -12,20 +11,21 @@ interface CountryStatus {
 
 const JurisdictionTracker: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [filter, setFilter] = useState<'all' | 'gap' | 'active'>('all');
 
   // Comprehensive Data Set based on Hague Conference Status Table for Philippines
   const COUNTRIES: CountryStatus[] = [
     // --- HOME ---
-    { code: 'PH', name: 'Philippines', status: 'home', region: 'Asia', notes: 'Target Jurisdiction. Non-Compliant enforcement.' },
+    { code: 'PH', name: 'Philippines', status: 'home', region: 'Asia', notes: 'Target Jurisdiction' },
 
     // --- THE GAP (Red List) - High Priority / Anglosphere ---
-    { code: 'US', name: 'United States', status: 'gap', region: 'North America', notes: 'CRITICAL: Accession NOT accepted. No return mechanism.' },
-    { code: 'GB', name: 'United Kingdom', status: 'gap', region: 'Europe', notes: 'Accession NOT accepted.' },
-    { code: 'CA', name: 'Canada', status: 'gap', region: 'North America', notes: 'Accession NOT accepted.' },
-    { code: 'AU', name: 'Australia', status: 'gap', region: 'Oceania', notes: 'Accession NOT accepted.' },
+    { code: 'US', name: 'United States', status: 'gap', region: 'North America', notes: 'CRITICAL: No Treaty Relations' },
+    { code: 'GB', name: 'United Kingdom', status: 'gap', region: 'Europe', notes: 'Accession NOT accepted' },
+    { code: 'CA', name: 'Canada', status: 'gap', region: 'North America', notes: 'Accession NOT accepted' },
+    { code: 'AU', name: 'Australia', status: 'gap', region: 'Oceania', notes: 'Accession NOT accepted' },
 
     // --- THE GAP (Asia/Pacific) ---
-    { code: 'CN', name: 'China (HK & Macau)', status: 'gap', region: 'Asia', notes: 'Treaty Inactive for PH.' },
+    { code: 'CN', name: 'China (HK & Macau)', status: 'gap', region: 'Asia', notes: 'Treaty Inactive for PH' },
     { code: 'KR', name: 'South Korea', status: 'gap', region: 'Asia' },
     { code: 'SG', name: 'Singapore', status: 'gap', region: 'Asia' },
     { code: 'TH', name: 'Thailand', status: 'gap', region: 'Asia' },
@@ -86,11 +86,8 @@ const JurisdictionTracker: React.FC = () => {
 
 
     // --- ACTIVE (Green List) ---
-    // Asia/Pacific
-    { code: 'JP', name: 'Japan', status: 'active', region: 'Asia', notes: 'Treaty Active.' },
-    { code: 'NZ', name: 'New Zealand', status: 'active', region: 'Oceania', notes: 'Treaty Active.' },
-
-    // Europe
+    { code: 'JP', name: 'Japan', status: 'active', region: 'Asia', notes: 'Treaty Active' },
+    { code: 'NZ', name: 'New Zealand', status: 'active', region: 'Oceania', notes: 'Treaty Active' },
     { code: 'AT', name: 'Austria', status: 'active', region: 'Europe' },
     { code: 'BE', name: 'Belgium', status: 'active', region: 'Europe' },
     { code: 'BG', name: 'Bulgaria', status: 'active', region: 'Europe' },
@@ -126,8 +123,6 @@ const JurisdictionTracker: React.FC = () => {
     { code: 'CH', name: 'Switzerland', status: 'active', region: 'Europe' },
     { code: 'UA', name: 'Ukraine', status: 'active', region: 'Europe' },
     { code: 'AD', name: 'Andorra', status: 'active', region: 'Europe' },
-
-    // Americas
     { code: 'AR', name: 'Argentina', status: 'active', region: 'South America' },
     { code: 'BR', name: 'Brazil', status: 'active', region: 'South America' },
     { code: 'CL', name: 'Chile', status: 'active', region: 'South America' },
@@ -136,141 +131,150 @@ const JurisdictionTracker: React.FC = () => {
     { code: 'PE', name: 'Peru', status: 'active', region: 'South America' },
     { code: 'UY', name: 'Uruguay', status: 'active', region: 'South America' },
     { code: 'VE', name: 'Venezuela', status: 'active', region: 'South America' },
-
-    // Middle East / Africa
     { code: 'IL', name: 'Israel', status: 'active', region: 'Middle East' },
     { code: 'ZA', name: 'South Africa', status: 'active', region: 'Africa' },
   ];
 
-  const filteredCountries = COUNTRIES.filter(c => 
-    c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    c.code.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const gapCountries = filteredCountries.filter(c => c.status === 'gap');
-  const activeCountries = filteredCountries.filter(c => c.status === 'active');
+  const filteredCountries = COUNTRIES.filter(c => {
+    const matchesSearch = c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         c.code.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesFilter = filter === 'all' 
+      ? true 
+      : filter === 'gap' ? c.status === 'gap' 
+      : c.status === 'active';
+      
+    return matchesSearch && matchesFilter;
+  });
 
   return (
     <div className="w-full space-y-6">
       
-      {/* INTRO CARD */}
-      <div className="bg-slate-900 rounded-2xl p-8 text-white border border-slate-700 shadow-xl">
+      {/* Intro Panel */}
+      <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div>
-            <h3 className="text-2xl font-bold font-mono tracking-tight flex items-center gap-3">
-              <Globe className="text-blue-500" />
-              JURISDICTION STATUS BOARD
+            <h3 className="text-xl font-bold font-serif flex items-center gap-2 text-slate-900">
+              <Globe className="text-slate-400" size={24} />
+              Jurisdiction Checker
             </h3>
-            <p className="text-slate-400 mt-2 max-w-xl text-sm">
-              The Hague Convention only applies between countries that have formally accepted each other's accession. Most Western nations have <strong>refused</strong> to accept the Philippines due to its poor judicial track record.
+            <p className="text-slate-500 mt-1 text-sm max-w-2xl">
+               Search for the child's "Habitual Residence". 
+               If the status is <strong className="text-red-600">GAP</strong>, the Hague Convention does NOT apply.
             </p>
           </div>
           
-          {/* Search */}
-          <div className="relative w-full md:w-64">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-500" size={16} />
-            <input 
-              type="text" 
-              placeholder="Search Country..." 
-              className="w-full bg-slate-800 border border-slate-600 text-white pl-10 pr-4 py-3 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-mono"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            {searchTerm && (
-              <button 
-                onClick={() => setSearchTerm('')}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-500 hover:text-white"
-              >
-                <X size={14} />
-              </button>
-            )}
+          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+             {/* Search */}
+             <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={16} />
+                <input 
+                  type="text" 
+                  placeholder="Search Country..." 
+                  className="w-full sm:w-64 bg-slate-50 border border-slate-200 text-slate-900 pl-10 pr-4 py-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                 {searchTerm && (
+                  <button 
+                    onClick={() => setSearchTerm('')}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  >
+                    <X size={14} />
+                  </button>
+                )}
+             </div>
+
+             {/* Filter Tabs */}
+             <div className="flex bg-slate-100 p-1 rounded-lg">
+                <button 
+                    onClick={() => setFilter('all')}
+                    className={`px-3 py-1.5 text-xs font-bold rounded-md transition-all ${filter === 'all' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+                >
+                    All
+                </button>
+                <button 
+                    onClick={() => setFilter('gap')}
+                    className={`px-3 py-1.5 text-xs font-bold rounded-md transition-all ${filter === 'gap' ? 'bg-white text-red-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+                >
+                    Gap
+                </button>
+                <button 
+                    onClick={() => setFilter('active')}
+                    className={`px-3 py-1.5 text-xs font-bold rounded-md transition-all ${filter === 'active' ? 'bg-white text-green-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+                >
+                    Active
+                </button>
+             </div>
           </div>
         </div>
       </div>
 
-      {/* THE ANGLOSPHERE GAP (Highlighted) */}
-      {!searchTerm && (
-        <div className="bg-red-50 border-l-4 border-red-600 p-6 rounded-r-xl shadow-sm">
-          <div className="flex items-start gap-4">
-            <ShieldAlert className="text-red-600 shrink-0 mt-1" size={24} />
-            <div>
-              <h4 className="text-lg font-bold text-red-900">CRITICAL ALERT: The Anglosphere Gap</h4>
-              <p className="text-red-800 text-sm mt-1 leading-relaxed">
-                If your child was habitually resident in the <strong>United States, United Kingdom, Canada, or Australia</strong>, you CANNOT use the Hague Convention "Summary Return" mechanism. These countries have blocked treaty relations with the Philippines. You must litigate custody from scratch in Philippine Family Courts.
-              </p>
-            </div>
-          </div>
+      {/* DATA TABLE (Scrollable Fixed Height) */}
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-96">
+        <div className="overflow-y-auto flex-1">
+            <table className="w-full text-left text-sm relative">
+                <thead className="bg-slate-50 border-b border-slate-200 sticky top-0 z-10 shadow-sm">
+                    <tr>
+                        <th className="px-6 py-4 font-bold text-slate-500 uppercase tracking-wider text-xs bg-slate-50">Country</th>
+                        <th className="px-6 py-4 font-bold text-slate-500 uppercase tracking-wider text-xs bg-slate-50">Region</th>
+                        <th className="px-6 py-4 font-bold text-slate-500 uppercase tracking-wider text-xs bg-slate-50">Treaty Status</th>
+                        <th className="px-6 py-4 font-bold text-slate-500 uppercase tracking-wider text-xs bg-slate-50">Notes</th>
+                    </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                    {filteredCountries.length > 0 ? (
+                        filteredCountries.map((country) => (
+                            <tr key={country.code} className="hover:bg-slate-50 transition-colors group">
+                                <td className="px-6 py-3">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-8 h-8 rounded bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-400 font-mono shrink-0">
+                                            {country.code}
+                                        </div>
+                                        <span className="font-bold text-slate-900">{country.name}</span>
+                                    </div>
+                                </td>
+                                <td className="px-6 py-3 text-slate-600">
+                                    {country.region}
+                                </td>
+                                <td className="px-6 py-3">
+                                    {country.status === 'gap' && (
+                                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-100 text-red-700 text-xs font-bold">
+                                            <ShieldAlert size={12} /> The Gap
+                                        </span>
+                                    )}
+                                    {country.status === 'active' && (
+                                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold">
+                                            <ShieldCheck size={12} /> Active
+                                        </span>
+                                    )}
+                                    {country.status === 'home' && (
+                                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold">
+                                            <Info size={12} /> Jurisdiction
+                                        </span>
+                                    )}
+                                </td>
+                                <td className="px-6 py-3">
+                                    {country.notes ? (
+                                        <span className="text-slate-600 italic text-xs">{country.notes}</span>
+                                    ) : (
+                                        <span className="text-slate-300">-</span>
+                                    )}
+                                </td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan={4} className="px-6 py-12 text-center text-slate-400">
+                                No countries found matching your search.
+                            </td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
         </div>
-      )}
-
-      <div className="grid md:grid-cols-2 gap-6">
-        
-        {/* GAP COLUMN */}
-        <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col h-[500px]">
-          <div className="bg-slate-100 p-4 border-b border-slate-200 flex justify-between items-center shrink-0">
-            <div className="flex items-center gap-2">
-              <ShieldAlert className="text-red-600" size={18} />
-              <h4 className="font-bold text-slate-700 text-sm uppercase tracking-wide">The Gap (No Return)</h4>
-            </div>
-            <span className="bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded-full">{gapCountries.length}</span>
-          </div>
-          <div className="divide-y divide-slate-100 overflow-y-auto flex-1">
-            {gapCountries.length > 0 ? (
-              gapCountries.map(country => (
-                <div key={country.code} className="p-4 hover:bg-slate-50 transition-colors flex justify-between items-center group">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono font-bold text-slate-400 w-6">{country.code}</span>
-                    <span className="font-medium text-slate-800">{country.name}</span>
-                  </div>
-                  {country.notes && (
-                    <span className="text-xs text-red-600 font-medium bg-red-50 px-2 py-1 rounded">
-                      {country.notes}
-                    </span>
-                  )}
-                </div>
-              ))
-            ) : (
-              <div className="p-8 text-center text-slate-400 text-sm">No matching Gap jurisdictions found.</div>
-            )}
-          </div>
-        </div>
-
-        {/* ACTIVE COLUMN */}
-        <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col h-[500px]">
-          <div className="bg-slate-100 p-4 border-b border-slate-200 flex justify-between items-center shrink-0">
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="text-green-600" size={18} />
-              <h4 className="font-bold text-slate-700 text-sm uppercase tracking-wide">Treaty Active</h4>
-            </div>
-            <span className="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-full">{activeCountries.length}</span>
-          </div>
-          <div className="divide-y divide-slate-100 overflow-y-auto flex-1">
-            {activeCountries.length > 0 ? (
-              activeCountries.map(country => (
-                <div key={country.code} className="p-4 hover:bg-slate-50 transition-colors flex justify-between items-center group">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono font-bold text-slate-400 w-6">{country.code}</span>
-                    <span className="font-medium text-slate-800">{country.name}</span>
-                  </div>
-                  <span className="text-xs text-green-600 font-medium bg-green-50 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                    Return Possible
-                  </span>
-                </div>
-              ))
-            ) : (
-              <div className="p-8 text-center text-slate-400 text-sm">No matching Active jurisdictions found.</div>
-            )}
-          </div>
-        </div>
-
-      </div>
-
-      {/* LEGEND / INFO */}
-      <div className="bg-blue-50 rounded-xl p-4 border border-blue-100 flex items-start gap-3">
-        <Info className="text-blue-500 shrink-0 mt-0.5" size={18} />
-        <div className="text-sm text-blue-800">
-          <strong className="block mb-1">What does "Active" mean?</strong>
-          It means the Hague mechanism is theoretically available. However, even with treaty partners, the Philippines is frequently cited for "Non-Compliance" due to judicial delays (2-3 years for return orders). A "Green" status does not guarantee a quick return.
+        <div className="bg-slate-50 px-6 py-3 border-t border-slate-200 text-xs text-slate-500 flex justify-between items-center shrink-0">
+            <span>Showing {filteredCountries.length} jurisdictions</span>
+            <span className="italic">Data Source: Hague Conference (HCCH) 2024</span>
         </div>
       </div>
 

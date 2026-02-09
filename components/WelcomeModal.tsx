@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Heart, X } from 'lucide-react';
 
@@ -13,12 +14,12 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({ isOpen, onClose }) => {
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
       {/* Backdrop */}
       <div 
-        className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm transition-opacity"
+        className="absolute inset-0 bg-slate-950/90 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
 
       {/* Modal Content */}
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden animate-fade-in-up max-h-[90vh] flex flex-col">
+      <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden animate-fade-in-up max-h-[90vh] flex flex-col border border-slate-700/50">
         {/* Close Button */}
         <button 
           onClick={onClose}
@@ -29,7 +30,7 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({ isOpen, onClose }) => {
 
         <div className="flex flex-col md:flex-row h-full overflow-y-auto md:overflow-hidden">
           {/* Left / Top Banner */}
-          <div className="bg-slate-900 p-8 md:w-1/3 flex-shrink-0 flex flex-col justify-center items-center text-center text-white relative overflow-hidden min-h-[200px] md:min-h-0">
+          <div className="bg-slate-800 p-8 md:w-1/3 flex-shrink-0 flex flex-col justify-center items-center text-center text-white relative overflow-hidden min-h-[200px] md:min-h-0 border-r border-slate-700/50">
             <div className="absolute inset-0 bg-blue-600 opacity-20 blur-3xl rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
             <Heart className="text-red-500 mb-4 relative z-10" size={48} fill="currentColor" />
             <h3 className="font-serif text-2xl font-bold relative z-10">Project 213</h3>
@@ -51,22 +52,19 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({ isOpen, onClose }) => {
 
             <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
               <p>
-                Right now, this resource is shaped by a very specific situation — I'm a U.S. father working to bring my daughter, <strong>Charlotte</strong>, home. Her mother — U.S. born, UK resident — exploited Article 213 to take her to the Philippines after it became clear she was going to lose custody because she was unfit, just as she'd done before with another child and a fabricated abuse claim. 
+                Right now, this resource is shaped by a very specific situation — I'm a U.S. father working to bring my daughter, <strong>Charlotte</strong>, home. Her mother exploited Article 213 to isolate her in the Philippines.
               </p>
               <p>
-                With an active arrest warrant, she can't leave — which means my daughter is now pigeonholed in a country she wasn't born in, cut off from her father, because a law made that easy to do.
+                <strong>However, the law serves a dual purpose.</strong> We recognize that Article 213 and RA 9262 are often the only shield for mothers protecting their children from abusive fathers. <strong className="text-slate-900">We support the protection of children from abuse, regardless of the perpetrator's gender.</strong>
               </p>
               <p>
-                <strong className="text-slate-900">That's not protection. That's exploitation.</strong> And she's not the only one doing it.
+                Our mission is to fight the <strong>weaponization</strong> of these laws against fit, loving parents. When a law designed to protect children is used to isolate them, the system has failed.
               </p>
               <p>
-                When a law turns a country into a safe haven for unfit parents who happen to have Filipino blood, something is deeply wrong with that law.
+                The deeper I got into Article 213, the clearer it became: <strong className="text-slate-900">this isn't a dad problem or a mom problem.</strong> It's a system problem that doesn't put the child first.
               </p>
               <p>
-                The deeper I got into Article 213, the clearer it became: <strong className="text-slate-900">this isn't a dad problem or a mom problem.</strong> It's a system that doesn't put the child first — and it affects Filipino families every single day.
-              </p>
-              <p>
-                Once Charlotte is home, I'm committed to reworking this into a broader resource for anyone in the Philippines navigating Article 213 — connecting with reform advocates and pushing for a system that asks one question first:
+                Once Charlotte is home, I'm committed to reworking this into a broader resource for anyone in the Philippines — mothers and fathers alike — navigating this system, pushing for a law that asks one question first:
               </p>
               <p className="font-bold text-slate-900 text-center py-3 bg-slate-50 rounded-lg border border-slate-100 mt-2">
                 "Ano ang pinakamabuti para sa bata?"<br/>
