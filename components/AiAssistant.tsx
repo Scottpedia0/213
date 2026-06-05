@@ -195,7 +195,7 @@ const AiAssistant: React.FC = () => {
                   <span className="text-xs text-slate-400">Calibrating...</span>
                 </div>
               </div>
-            ))}
+            )}
             <div ref={messagesEndRef} />
           </div>
 
